@@ -85,6 +85,13 @@ may be evaluated at most once. This means that it is impossible (or difficult at
 to implement macros using `infer-type` such that the original expression is never evaluated
 in the expanded form, e.g. constant folding.
 
+## Practical use
+
+Examples of practical use of the library can be found in the following products:
+
+- [sweet-array](https://github.com/athos/sweet-array)
+- [power-dot](https://github.com/athos/power-dot)
+
 ## License
 
 Copyright © 2021 Shogo Ohta
