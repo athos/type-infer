@@ -1,6 +1,13 @@
 # type-infer
+[![Clojars Project](https://img.shields.io/clojars/v/type-infer.svg)](https://clojars.org/type-infer)
 
 A Clojure utility to inspect static types inferred by the Clojure compiler
+
+## Installation
+
+Add the following to your project `:dependencies`:
+
+[![Clojars Project](https://clojars.org/type-infer/latest-version.svg)](https://clojars.org/type-infer)
 
 ## Usage
 
