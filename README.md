@@ -36,7 +36,7 @@ the Clojure compiler can infer it:
 ```
 
 Otherwise (i.e. the compiler failed to infer the static type of the given expression),
-the `infer` macro returns `nil`:
+`infer` returns `nil`:
 
 ```clojure
 (infer (identity 42)) ;=> nil
