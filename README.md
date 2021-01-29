@@ -25,8 +25,8 @@ by the Clojure compiler:
 (infer "foo") ;=> java.lang.String
 ```
 
-It can take one arbitrary expression and returns its static type as long as 
-the Clojure compiler can infer it:
+It can take an arbitrary expression and returns its static type as long as 
+the Clojure compiler can infer:
 
 ```clojure
 (infer (not false)) ;=> java.lang.Boolean
@@ -45,16 +45,16 @@ Otherwise (i.e. the compiler failed to infer the static type of the given expres
 (infer cons) ;=> nil
 ```
 
-The `infer` macro aims to be used mainly as a development tool for performance tuning,
-especially when eliminating reflection warnings or taking full advantage of primitive types.
+The `infer` macro is mainly intended to be used for performance tuning, and is especially
+useful for removing reflection warnings and taking full advantage of primitive types.
 
-In most cases, `infer` per se is hard to use in your function or macro.
+In most cases, `infer` per se is difficult to use in your function or macro.
 If you want to use it in your macro, it's highly recommend to use `infer-type` below instead.
 
 ### `infer-type`
 
-The `infer-type` fn takes two arguments. The first one is the macro's implicit argument
-`&env` and the second one is a symbol. To get `&env`, you need to call it in a macro:
+The `infer-type` fn takes two arguments: The first one is the implicit macro argument
+`&env` and the second one is a symbol. To get `&env`, you need to call `infer-type` in a macro:
 
 ```clojure
 (require '[type-infer.core :as ty])
@@ -70,8 +70,8 @@ The `infer-type` fn takes two arguments. The first one is the macro's implicit a
 ```
 
 Note that `infer-type` only accepts a symbol as its second argument.
-If you want to pass arbitrary expression to it, you'll need to pass it via a `let` form
-like the following:
+If you want to pass arbitrary expression to it, you'll need to pass the expression
+via an extra `let` form like the following:
 
 ```clojure
 (defmacro my-infer-type [x]
@@ -83,12 +83,12 @@ like the following:
 
 Note also that due to the above limitation, the target expression of the type inference
 may be evaluated at most once. This means that it is impossible (or difficult at best)
-to implement macros using `infer-type` such that the original expression is never evaluated
-in the expanded form, e.g. constant folding.
+to implement macros using `infer-type` such that the input expression is never evaluated
+in the expanded form.
 
 ## Practical use
 
-Examples of practical use of the library can be found in the following products:
+Examples of practical use of the library can be found in the following projects:
 
 - [sweet-array](https://github.com/athos/sweet-array)
 - [power-dot](https://github.com/athos/power-dot)
