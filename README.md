@@ -1,5 +1,6 @@
 # type-infer
 [![Clojars Project](https://img.shields.io/clojars/v/type-infer.svg)](https://clojars.org/type-infer)
+![build](https://github.com/athos/type-infer/workflows/build/badge.svg)
 
 A Clojure utility to inspect static types inferred by the Clojure compiler
 
