@@ -41,7 +41,7 @@
               Class)
         (when-let [c (some-> (namespace sym) symbol resolve)]
           (when (class? c)
-            (when-let [^Field field (.getField c (name sym))]
+            (when-let [^Field field (.getField ^Class c (name sym))]
               (.getType field))))))))
 
 (defmacro infer* [sym]
