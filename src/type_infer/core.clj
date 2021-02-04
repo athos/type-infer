@@ -13,7 +13,7 @@
    shorts 'shorts, ints 'ints, longs 'longs
    floats 'floats, doubles 'doubles})
 
-(defn resolve-tag [t]
+(defn ^Class resolve-tag [t]
   (cond (symbol? t)
         (if-let [t' (array-type-tags t)]
           (recur t')
@@ -25,7 +25,7 @@
         (class? t) t
         (fn? t) (recur (array-fn->array-type t))))
 
-(defn infer-type [&env sym]
+(defn ^Class infer-type [&env sym]
   (if-let [t (:tag (meta sym))]
     (resolve-tag t)
     (if-let [^Compiler$LocalBinding lb (get &env sym)]
