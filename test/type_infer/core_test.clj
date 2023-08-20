@@ -1,5 +1,5 @@
 (ns type-infer.core-test
-  (:require [clojure.test :refer [deftest is]]
+  (:require [clojure.test :refer [deftest is are]]
             [type-infer.core :as ty])
   (:import [java.util Optional]))
 
@@ -31,3 +31,20 @@
   (is (= Double/TYPE (ty/infer (let [x 3.0 y (+ x 1)] (+ (* x x) (* y y))))))
   (is (= clojure.lang.AFunction (ty/infer (fn [x] x))))
   (is (nil? (ty/infer (identity 42)))))
+
+(ty/def xs (int-array 0))
+(ty/def ^ints ys (identity (int-array 0)))
+(ty/def ^"[I" zs (int-array 0))
+
+(deftest def-test
+  (is (= (Class/forName "[I") (ty/infer xs)))
+  (is (= (Class/forName "[I") (ty/infer ys)))
+  (is (= (Class/forName "[I") (ty/infer zs)))
+  (let [eval* (fn [expr]
+                (binding [*ns* (the-ns 'type-infer.core-test)]
+                  (eval expr)))]
+    (are [expr] (thrown? Exception (eval* expr))
+      '(ty/def ^unknown y "foo")
+      '(ty/def x (identity "foo"))
+      '(ty/def ^ints vs "foo")
+      '(ty/def z 42))))
