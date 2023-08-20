@@ -21,7 +21,11 @@
             (when (class? v)
               v)))
 
-        (string? t) (Class/forName t)
+        (string? t)
+        (try
+          (Class/forName t)
+          (catch Exception _ nil))
+
         (class? t) t
         (fn? t) (recur (array-fn->array-type t))))
 
