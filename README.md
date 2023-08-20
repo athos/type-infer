@@ -12,6 +12,10 @@ Add the following to your project `:dependencies`:
 
 ## Usage
 
+- [`infer`](#infer)
+- [`infer-type`](#infer-type)
+- [`def`](#def)
+
 ### `infer`
 
 The `infer` macro tells us the static type of the given expression inferred
@@ -61,7 +65,7 @@ The `infer-type` fn takes two arguments: The first one is the implicit macro arg
 
 (defmacro my-infer-type* [sym]
   (ty/infer-type &env sym))
- 
+
 (def ^String s "foo")
 (my-infer-type s) ;=> java.lang.String
 
@@ -85,6 +89,29 @@ Note also that due to the above limitation, the target expression of the type in
 may be evaluated at most once. This means that it is impossible (or difficult at best)
 to implement macros using `infer-type` such that the input expression is never evaluated
 in the expanded form.
+
+### `def`
+
+```clojure
+(set! *warn-on-reflection* true)
+
+(def s "foo")
+(.toUpperCase s)
+;; Reflection warning, NO_SOURCE_PATH:1:1 - reference to field toUpperCase can't be resolved.
+```
+
+```clojure
+(def ^String s "foo")
+(.toUpperCase s) ;=> "FOO"
+```
+
+```clojure
+(ty/def s "foo")
+```
+
+```clojure
+(def ^String s "foo")
+```
 
 ## Practical use
 
