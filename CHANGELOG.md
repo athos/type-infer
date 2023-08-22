@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
 ## [Unreleased]
+
+## [0.1.2] - 2023-08-22
 ### Fixed
 - [#1](https://github.com/athos/type-infer/pull/1) Fix error that occurs when calling resolve-tag on bad string tags
 
@@ -13,5 +15,6 @@ All notable changes to this project will be documented in this file. This change
 - First release
 
 [Unreleased]: https://github.com/athos/type-infer/compare/0.1.0...HEAD
+[0.1.2]: https://github.com/athos/type-infer/compare/0.1.1...0.1.2
 [0.1.1]: https://github.com/athos/type-infer/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/athos/type-infer/releases/0.1.0
