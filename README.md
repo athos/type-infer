@@ -1,14 +1,22 @@
 # type-infer
-[![Clojars Project](https://img.shields.io/clojars/v/type-infer.svg)](https://clojars.org/type-infer)
+[![Clojars Project](https://img.shields.io/clojars/v/dev.athos/type-infer.svg)](https://clojars.org/dev.athos/type-infer)
 ![build](https://github.com/athos/type-infer/workflows/build/badge.svg)
 
 A Clojure utility to inspect static types inferred by the Clojure compiler
 
 ## Installation
 
-Add the following to your project `:dependencies`:
+Add the following to your `deps.edn` / `project.clj`:
 
-[![Clojars Project](https://clojars.org/type-infer/latest-version.svg)](https://clojars.org/type-infer)
+- `deps.edn`
+```
+{dev.athos/type-infer {:mvn/version "0.1.2"}}
+```
+
+- `project.clj`
+```
+[dev.athos/type-infer "0.1.2"]
+```
 
 ## Usage
 
